@@ -10,7 +10,7 @@ import requests
 
 
 class BankViewSet(viewsets.ModelViewSet):
-    queryset = Bank.objects.all().order_by('id')
+    queryset = Bank.objects.all().order_by("id")
     serializer_class = BankSerializer
 
     def perform_destroy(self, instance):
@@ -18,16 +18,24 @@ class BankViewSet(viewsets.ModelViewSet):
             raise ValidationError("Cannot delete. Users are associated with this bank.")
         instance.delete()
 
+
 class GenerateRandomBanksView(APIView):
     def post(self, request):
         data = request.data
-        num_of_banks = data.get('num_of_banks')
+        num_of_banks = data.get("num_of_banks")
 
         if not num_of_banks or num_of_banks < 0 or num_of_banks > 100:
-            return Response({"error": "Number of banks should be specified and should not exceed 100."}, status=400)
+            return Response(
+                {
+                    "error": "Number of banks should be specified and should not exceed 100."
+                },
+                status=400,
+            )
 
         try:
-            response = requests.get(f"https://random-data-api.com/api/v2/banks/?size={num_of_banks}&response_type=json")
+            response = requests.get(
+                f"https://random-data-api.com/api/v2/banks/?size={num_of_banks}&response_type=json"
+            )
 
             if response.status_code == 200:
                 banks_data = response.json()
@@ -39,16 +47,20 @@ class GenerateRandomBanksView(APIView):
                     if bank_serializer.is_valid():
                         bank_serializer.save()
 
-                return Response({"message": f"{num_of_banks} banks have been successfully added."}, status=201)
+                return Response(
+                    {"message": f"{num_of_banks} banks have been successfully added."},
+                    status=201,
+                )
             else:
                 return Response({"error": "Failed to fetch bank data."}, status=500)
-        
+
         except requests.RequestException as e:
             return Response({"error": f"Request failed: {str(e)}"}, status=500)
-        
+
         except Exception as e:
             return Response({"error": f"An error occurred: {str(e)}"}, status=500)
-        
+
+
 class RemoveUserFromBankView(APIView):
     def delete(self, request, user_id, bank_id):
         user = get_object_or_404(User, pk=user_id)
@@ -56,6 +68,8 @@ class RemoveUserFromBankView(APIView):
 
         if user.banks.filter(pk=bank_id).exists():
             user.banks.remove(bank)
-            return Response({'message': 'User removed from bank successfully'}, status=200)
-        
-        return Response({'error': 'User is not associated with this bank'}, status=400)
+            return Response(
+                {"message": "User removed from bank successfully"}, status=200
+            )
+
+        return Response({"error": "User is not associated with this bank"}, status=400)

@@ -1,15 +1,10 @@
 FROM python:3.9
 
-WORKDIR /app/
+WORKDIR /app
 
-COPY requirements.txt /app/
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY . /app
+COPY . .
 
-RUN python manage.py makemigrations --no-input
-RUN python manage.py migrate --no-input
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
-
+CMD python manage.py makemigrations --no-input && python manage.py migrate --no-input && python manage.py runserver 0.0.0.0:8000

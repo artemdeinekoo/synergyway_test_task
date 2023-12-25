@@ -33,11 +33,9 @@ class userService {
   }
 
   async getUserUnknownBanks(id: number) {
-    console.log(id);
     const test = await axios.get<IUnknownBank[]>(
       `${this.API_URL}/${id}/unknown_banks`
     );
-    console.log(test);
     return test;
   }
 
