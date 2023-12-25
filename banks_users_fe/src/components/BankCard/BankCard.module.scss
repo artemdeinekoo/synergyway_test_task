@@ -1,0 +1,104 @@
+.bankcard {
+  width: 100%;
+  .card {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background: #558c8c;
+    padding: 20px;
+    border-radius: 15px;
+
+    .text {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+
+      h3 {
+        font-weight: 400;
+        font-size: 18px;
+        color: #eff7ff;
+      }
+
+      input {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+      }
+
+      .error {
+        border: 2px #ee1515 solid !important;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      button {
+        font-weight: 700;
+        font-size: 20px;
+        cursor: pointer;
+        color: #eff7ff;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      :first-child:hover {
+        background: #192734;
+      }
+
+      :nth-child(2):hover {
+        background: #e8db7d;
+      }
+
+      :last-child:hover {
+        background: #82204a;
+      }
+    }
+  }
+
+  .inner {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    .el {
+      padding: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #e8db7d;
+      border-radius: 10px;
+
+      .user {
+        display: flex;
+        gap: 20px;
+        color: #192734;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      button {
+        font-weight: 700;
+        font-size: 16px;
+        height: 100%;
+        padding: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        border-radius: 10px;
+        background: #82204a;
+        color: #eff7ff;
+      }
+    }
+  }
+
+  .inner.active {
+    padding: 20px;
+    max-height: 460px;
+    overflow-y: auto;
+  }
+}

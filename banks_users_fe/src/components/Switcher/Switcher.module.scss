@@ -1,0 +1,20 @@
+.switcher {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  height: 100px;
+  button {
+    color: #eff7ff;
+    font-size: 30px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .active {
+    font-weight: 700;
+    font-size: 35px;
+  }
+}

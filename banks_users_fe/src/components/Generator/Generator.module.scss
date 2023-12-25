@@ -1,0 +1,29 @@
+.generator {
+  padding: 25px 0;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: flex-end;
+
+  input {
+    display: block;
+    width: 80px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+  }
+
+  button {
+    font-weight: 700;
+    font-size: 18px;
+    color: #eff7ff;
+    padding: 10px;
+    background: #e8db7d;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #558c8c;
+  }
+}

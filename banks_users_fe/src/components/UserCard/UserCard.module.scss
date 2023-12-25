@@ -1,0 +1,63 @@
+.card {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background: #558c8c;
+  padding: 20px;
+  border-radius: 15px;
+
+  .text {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    h3 {
+      font-weight: 400;
+      font-size: 18px;
+      color: #eff7ff;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    .error {
+      border: 2px #ee1515 solid !important;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    gap: 20px;
+    button {
+      font-weight: 700;
+      font-size: 20px;
+      cursor: pointer;
+      color: #eff7ff;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    :first-child:hover {
+      background: #e8db7d;
+    }
+
+    .join:hover {
+      background: #192734;
+    }
+
+    :last-child:hover {
+      background: #82204a;
+    }
+
+    .submit:hover {
+      background: #e8db7d;
+    }
+
+    .cancel:hover {
+      background: #82204a;
+    }
+  }
+}
