@@ -4,26 +4,24 @@ import styles from "./BanksModal.module.scss";
 import Loading from "../Loading/Loading";
 import { useAddBankToUser } from "@/hooks/useAddBankToUser";
 import { IUnknownBank } from "@/interfaces/Bank";
+import { useGetUserUnknownBanks } from "@/hooks/useGetUserUnknownBanks";
 
 interface IBanksModal {
   open: boolean;
   close: () => void;
   user_id: number;
-  data: IUnknownBank[] | undefined;
-  isLoading: boolean;
-  isError: boolean;
 }
 
-const BanksModal = ({
-  open,
-  close,
-  data,
-  isLoading,
-  isError,
-  user_id,
-}: IBanksModal) => {
+const BanksModal = ({ open, close, user_id }: IBanksModal) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const { mutate } = useAddBankToUser();
+  const { data, isLoading, isError, refetch } = useGetUserUnknownBanks(user_id);
+
+  useEffect(() => {
+    if (open) {
+      refetch();
+    }
+  }, [open]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

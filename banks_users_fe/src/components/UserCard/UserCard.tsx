@@ -29,7 +29,6 @@ const UserCard = ({
   const [modalOpen, setModalOpen] = useState(false);
   const { mutate: updateUser } = useUpdateUser();
   const { mutate: deleteUser } = useDeleteUser();
-  const { data, isLoading, isError } = useGetUserUnknownBanks(id);
 
   const {
     register,
@@ -90,9 +89,6 @@ const UserCard = ({
       <BanksModal
         open={modalOpen}
         close={() => setModalOpen(false)}
-        data={data}
-        isLoading={isLoading}
-        isError={isError}
         user_id={id}
       />
       <div className={styles.text}>

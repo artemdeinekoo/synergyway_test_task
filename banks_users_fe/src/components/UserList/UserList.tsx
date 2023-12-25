@@ -6,7 +6,7 @@ import styles from "./UserList.module.scss";
 import { useUsers } from "@/hooks/useUsers";
 
 const UserList = () => {
-  const { data, isLoading, isError, refetch } = useUsers();
+  const { data, isLoading, isError } = useUsers();
 
   return (
     <div className={styles.list}>

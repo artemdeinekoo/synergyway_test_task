@@ -2,3 +2,8 @@
   padding: 30px 120px;
 }
 
+@media all and (max-width: 1440px) {
+  .wrapper {
+    padding: 30px;
+  }
+}
