@@ -1,11 +1,11 @@
 FROM node:18.17.0
 
-WORKDIR /app/frontend/
+WORKDIR /app
 
-COPY package.json package-lock.json /app/frontend/
+COPY package.json package-lock.json /app/
 RUN npm install
 
-COPY . /app/frontend/
+COPY . /app
 
 RUN npm run build
 
